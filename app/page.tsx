@@ -227,14 +227,14 @@ export default function Portfolio() {
           description: "Plataforma completa con +300% aumento en conversiones",
           tech: ["Next.js", "Stripe", "SEO"],
           metrics: "300% ↑ Conversiones",
-          demoUrl: "https://rifasloscuatrofantasticos.com",
+          demoUrl: "https://tiendatexas.com",
         },
         {
           title: "SaaS Dashboard",
           description: "Dashboard analítico con estrategia de growth integrada",
           tech: ["React", "D3.js", "Analytics"],
           metrics: "150% ↑ Retención",
-          demoUrl: "https://tiendatexas.com",
+          demoUrl: "https://rifasloscuatrofantasticos.com",
         },
         {
           title: "Marketing Automation",
@@ -280,14 +280,14 @@ export default function Portfolio() {
           description: "Complete platform with +300% increase in conversions",
           tech: ["Next.js", "Stripe", "SEO"],
           metrics: "300% ↑ Conversions",
-          demoUrl: "https://rifasloscuatrofantasticos.com",
+          demoUrl: "https://tiendatexas.com",
         },
         {
           title: "SaaS Dashboard",
           description: "Analytics dashboard with integrated growth strategy",
           tech: ["React", "D3.js", "Analytics"],
           metrics: "150% ↑ Retention",
-          demoUrl: "https://example-dashboard.com",
+          demoUrl: "https://rifasloscuatrofantasticos.com",
         },
         {
           title: "Marketing Automation",
