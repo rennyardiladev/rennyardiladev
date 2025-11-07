@@ -5,9 +5,36 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Renny Ardila Dev | Portafolio y Proyectos',
+  description:
+    'Desarrollador full stack especializado en automatización, SaaS, marketing digital y soluciones web modernas. Conoce mis proyectos y servicios.',
+  generator: 'Next.js',
+  authors: [{ name: 'Renny Ardila', url: 'https://rennyardiladev.vercel.app' }],
+  keywords: [
+    'Renny Ardila',
+    'Desarrollador web',
+    'Full Stack Developer',
+    'Portafolio',
+    'SaaS',
+    'Automatización',
+    'Bots de WhatsApp',
+    'Marketing digital',
+    'Next.js',
+    'JavaScript',
+  ],
+  metadataBase: new URL('https://rennyardiladev.vercel.app'),
+  openGraph: {
+    title: 'Renny Ardila Dev',
+    description:
+      'Explora mis proyectos, SaaS, y herramientas creadas para optimizar negocios digitales.',
+    url: 'https://rennyardiladev.vercel.app',
+    siteName: 'Renny Ardila Dev',
+    locale: 'es_CO',
+    type: 'website',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -16,14 +43,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
+          html {
+            font-family: ${GeistSans.style.fontFamily};
+            --font-sans: ${GeistSans.variable};
+            --font-mono: ${GeistMono.variable};
+          }
         `}</style>
       </head>
       <body>
