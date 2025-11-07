@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Renny Ardila Dev',
     description:
-      'Explora mis proyectos, SaaS, y herramientas creadas para optimizar negocios digitales.',
+      'Explora mis proyectos, SaaS y herramientas creadas para optimizar negocios digitales.',
     url: 'https://rennyardiladev.vercel.app',
     siteName: 'Renny Ardila Dev',
     locale: 'es_CO',
     type: 'website',
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png', // favicon local en /public
   },
 }
 
