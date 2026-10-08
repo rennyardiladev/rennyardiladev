@@ -2,247 +2,302 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/* ========================================
+   VARIABLES
+======================================== */
 
 @layer base {
   :root {
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --pink: #F0237A;
+    --blue: #3158FF;
+    --sun: #FFD23C;
+    --ink: #16181D;
+    --muted: #646D7D;
+    --bg: #ECF0F3;
   }
 }
+
+/* ========================================
+   BODY
+======================================== */
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground;
+    margin: 0;
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      sans-serif;
+
+    background-color: var(--bg);
+    color: var(--ink);
   }
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* Oculta la barra de desplazamiento predeterminada del body */
-}
+/* ========================================
+   COMPONENTES GENERALES
+======================================== */
 
-/* Contenedor principal con scroll-snap */
-.main-scroll-container {
-  height: 100vh; /* Ocupa el 100% de la altura de la ventana */
-  overflow-y: scroll; /* Permite el desplazamiento vertical */
-  scroll-snap-type: y mandatory; /* Habilita el scroll-snap vertical obligatorio */
-}
+@layer components {
 
-/* Estilo de la barra de desplazamiento personalizada */
-.main-scroll-container::-webkit-scrollbar {
-  width: 8px;
-}
+  .chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-white border;
 
-.main-scroll-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.main-scroll-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-.main-scroll-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-/* Cada sección se ajustará al inicio de la ventana */
-.section-snap {
-  scroll-snap-align: start;
-  min-height: 100vh; /* Asegura que cada sección ocupe toda la altura de la ventana */
-  display: flex; /* Para centrar el contenido verticalmente */
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-/* Animación para las estrellas */
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
+    border-color: #646D7D33;
   }
-  50% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-}
-.animate-twinkle {
-  animation: twinkle 3s ease-in-out infinite;
-}
 
-/* Animación para las gotas de lluvia */
-@keyframes rain-fall {
-  0% {
-    transform: translateY(-100vh);
+  .disp {
+    @apply block;
+  }
+
+  .step {
+    @apply relative;
+  }
+
+  .proj {
+    @apply block rounded-[20px] overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .thumb {
+    @apply aspect-square;
+  }
+
+  .proj-badge {
+    @apply absolute top-2 right-2 rounded-full px-2.5 py-0.5 text-xs font-medium;
+
+    background: var(--pink);
+    color: #fff;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .play-hint {
+    @apply absolute bottom-2 right-2 rounded-full bg-white/70 p-1;
+
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .play-hint svg {
+    @apply block h-4 w-4 text-[var(--ink)];
+  }
+
+  .f {
+    @apply w-full rounded-lg border bg-white px-3 py-2 text-sm outline-none focus:border-[var(--pink)];
+
+    border-color: #646D7D33;
+  }
+
+  /* ========================================
+     COMPARADOR
+  ======================================== */
+
+  .cmp {
+    @apply relative w-full select-none aspect-[4/3] overflow-hidden;
+
+    --p: 50%;
+
+    /*
+      Importante para dispositivos táctiles.
+      Evita que el navegador interprete
+      el movimiento como scroll.
+    */
+    touch-action: none;
+  }
+
+  /* ========================================
+     CAPAS
+  ======================================== */
+
+  .cmp .layer {
+    @apply absolute inset-0 w-full h-full overflow-hidden;
+  }
+
+  /* VECTOR */
+
+  .cmp .layer.before {
+    z-index: 1;
+
+    clip-path: inset(
+      0
+      var(--p)
+      0
+      0
+    );
+  }
+
+  /* PELUCHE */
+
+  .cmp .layer.after {
+    z-index: 2;
+
+    clip-path: inset(
+      0
+      0
+      0
+      var(--p)
+    );
+  }
+
+  /* ========================================
+     IMÁGENES
+  ======================================== */
+
+  .cmp img {
+    @apply block h-full w-full object-cover;
+
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* ========================================
+     ETIQUETAS
+  ======================================== */
+
+  .cmp .tag {
+    @apply absolute top-2 rounded-full px-2 py-0.5 text-xs font-medium;
+
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  .cmp .tag.l {
+    left: 8px;
+
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .cmp .tag.r {
+    right: 8px;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+  }
+
+  /* ========================================
+     BARRA
+  ======================================== */
+
+  .cmp .bar {
+    @apply absolute top-0 bottom-0 w-0.5 bg-[var(--pink)];
+
+    left: var(--p);
+
+    z-index: 40;
+
+    /*
+      La barra es solamente visual.
+      El input recibe los clics.
+    */
+    pointer-events: none;
+  }
+
+  /* ========================================
+     BOTÓN
+  ======================================== */
+
+  .cmp .knob {
+    @apply absolute top-1/2
+      -translate-x-1/2
+      -translate-y-1/2
+      flex
+      h-8
+      w-8
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-[var(--ink)]
+      shadow-md;
+
+    left: var(--p);
+
+    z-index: 40;
+
+    pointer-events: none;
+  }
+
+  /* ========================================
+     INPUT RANGE
+  ======================================== */
+
+  .cmp input {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 50;
+
+    margin: 0;
+    padding: 0;
+
     opacity: 0;
+
+    cursor: ew-resize;
+
+    /*
+      MUY IMPORTANTE:
+      NO usar -z-10 aquí.
+    */
+    pointer-events: auto;
+
+    appearance: none;
+    -webkit-appearance: none;
   }
-  20% {
-    opacity: 1;
+
+  /* ========================================
+     RANGE THUMB - CHROME / EDGE / SAFARI
+  ======================================== */
+
+  .cmp input::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 40px;
+    height: 100%;
+
+    cursor: ew-resize;
   }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
+
+  /* ========================================
+     RANGE THUMB - FIREFOX
+  ======================================== */
+
+  .cmp input::-moz-range-thumb {
+    width: 40px;
+    height: 100%;
+
+    border: 0;
+    background: transparent;
+
+    cursor: ew-resize;
   }
-}
 
-.raindrop {
-  position: absolute;
-  width: 2px; /* Ancho de la gota */
-  height: 15px; /* Largo de la gota */
-  background: rgba(255, 255, 255, 0.6); /* Color blanco/azul claro para la lluvia */
-  border-radius: 50%; /* Forma de gota */
-  animation: rain-fall 2s linear infinite; /* Animación de caída */
-  pointer-events: none; /* Para que no interfiera con clics */
-}
+  /* ========================================
+     RANGE TRACK
+  ======================================== */
 
-/* Estilo para la barra de desplazamiento personalizada del chatbot */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
+  .cmp input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* New fade-in animation for the welcome bubble */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+    background: transparent;
+    border: 0;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .cmp input::-moz-range-track {
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    border: 0;
   }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-/* Animations for modal */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes zoom-in-95 {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-in {
-  animation-fill-mode: both;
-}
-
-.fade-in {
-  animation-name: fade-in;
-}
-
-.zoom-in-95 {
-  animation-name: zoom-in-95;
-}
-
-.duration-300 {
-  animation-duration: 300ms;
 }

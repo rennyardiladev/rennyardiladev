@@ -1,62 +1,27 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Renny Ardila Dev | Portafolio y Proyectos',
-  description:
-    'Desarrollador full stack especializado en automatización, SaaS, marketing digital y soluciones web modernas. Conoce mis proyectos y servicios.',
-  generator: 'Next.js',
-  authors: [{ name: 'Renny Ardila', url: 'https://rennyardiladev.vercel.app' }],
-  keywords: [
-    'Renny Ardila',
-    'Desarrollador web',
-    'Full Stack Developer',
-    'Portafolio',
-    'SaaS',
-    'Automatización',
-    'Bots de WhatsApp',
-    'Marketing digital',
-    'Next.js',
-    'JavaScript',
-  ],
-  metadataBase: new URL('https://rennyardiladev.vercel.app'),
-  openGraph: {
-    title: 'Renny Ardila Dev',
-    description:
-      'Explora mis proyectos, SaaS y herramientas creadas para optimizar negocios digitales.',
-    url: 'https://rennyardiladev.vercel.app',
-    siteName: 'Renny Ardila Dev',
-    locale: 'es_CO',
-    type: 'website',
-  },
+  title: 'Renny Ardila | Diseño gráfico, desarrollo web y marketing',
+  description: 'Diseñador gráfico y desarrollador web. Dibujo personajes, preparo fichas técnicas y empaque, y desarrollo con Next.js y React el sitio que vende.',
   icons: {
-    icon: '/favicon.png', // favicon local en /public
+    icon: '/favicon.ico',
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es">
-      <head>
-        <style>{`
-          html {
-            font-family: ${GeistSans.style.fontFamily};
-            --font-sans: ${GeistSans.variable};
-            --font-mono: ${GeistMono.variable};
-          }
-        `}</style>
-      </head>
-      <body>
+      <body className={inter.className} suppressHydrationWarning>
         {children}
-        <Analytics />
       </body>
     </html>
-  )
+  );
 }

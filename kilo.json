@@ -1,0 +1,4 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "//": "This file is used to configure Kilo agents and commands. See .kilo/command/*.md and .kilo/agent/*.md for details."
+}
