@@ -61,6 +61,7 @@ export const PROJECTS: Project[] = [
   {id:8, col:'Desarrollo web', name:'Tienda Latorre', url:'https://tienlatoree.vercel.app', color:'#3158FF', thumb:'/lato.png',desc:'Landing page con IA y app interactiva para ver prendas, colores y marcas y pequenos modelos de IA prediciendo la compra.'},
   {id:9, col:'Desarrollo web', name:'Tienda Texas', url:'https://rais-liart.vercel.app', color:'#3FD0A0', thumb:'/tex.png', desc:'Tienda en línea creada para un negocio en Estados Unidos encargado en ecommerce.'},
   {id:10, col:'Desarrollo web', name:'Hypersoporte', url:'https://hypersoporte.com', color:'#FFB92E', thumb:'/panel.png', desc:'E-commerce con panel de administración y compra de moneda de juego.'},
-  {id:15, col:'Desarrollo web', name:'Aumento de Seguidores', url:'https://aumentodeseguidores.com', color:'#FFB92E', thumb:'/aumento.png', desc:'E-commerce con panel de administración y compra de moneda de juego.'}
+  {id:15, col:'Desarrollo web', name:'Aumento de Seguidores', url:'https://aumentodeseguidores.com', color:'#FFB92E', thumb:'/aumento.png', desc:'E-commerce con panel de administración y compra de moneda de juego.'},
+  {id:16, col:'Desarrollo web', name:'Burguer Club', url:'https://burguerclub.vercel.app/', color:'#FFB92E', thumb:'/burguer.png', desc:'Aplicacion web de comandas para restaurantes.'}
 
 ];
