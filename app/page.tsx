@@ -1,18 +1,16 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useState, useRef, FormEvent } from 'react';
 import { Project, PROJECTS } from '@/types/project';
 import { getToySvg, getWebSvg } from '@/lib/svgs';
 import ComparisonSlider from '@/components/ComparisonSlider';
 import LazyVideo from '@/components/LazyVideo';
 import Button from '@/components/Button';
-import { sendEmail } from '@/actions/sendEmail';
 
 export default function Home() {
   const [selectedCol, setSelectedCol] = useState<string>('Todos');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
-  const [formStatus, action] = useFormState(sendEmail, null);
+  const [formStatus, setFormStatus] = useState<string>('');
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const categories = ['Todos', ...Array.from(new Set(PROJECTS.map(p => p.col)))];
@@ -28,6 +26,19 @@ export default function Home() {
   const closeModal = () => {
     if (modalRef.current) modalRef.current.close();
     setActiveModalProject(null);
+  };
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const nombre = (formData.get('nombre') as string)?.trim() ?? '';
+    const email = (formData.get('email') as string)?.trim() ?? '';
+    const mensaje = (formData.get('mensaje') as string)?.trim() ?? '';
+
+    const text = `Consulta de ${nombre}%0AEmail: ${email}%0AMensaje: ${mensaje}`;
+
+    window.location.href = `https://wa.me/3161744421?text=${encodeURIComponent(text)}`;
+    setFormStatus('Abriendo WhatsApp...');
   };
 
   return (
@@ -215,12 +226,12 @@ export default function Home() {
             </ul>
             <Button href="/cv.pdf" download variant="line" className="mt-8">Descargar CV (PDF)</Button>
           </div>
-          <form action={action} className="space-y-4">
+          <form onSubmit={handleFormSubmit} className="space-y-4">
             <label className="block"><span className="font-semibold">Nombre</span><input className="f mt-1" name="nombre" required autoComplete="name" /></label>
             <label className="block"><span className="font-semibold">Correo</span><input className="f mt-1" type="email" name="email" required autoComplete="email" /></label>
             <label className="block"><span className="font-semibold">Mensaje</span><textarea className="f mt-1" name="mensaje" rows={5} required></textarea></label>
             <Button type="submit" variant="pink">Enviar mensaje</Button>
-            <p className="text-sm" role="status">{formStatus?.status ?? ''}</p>
+            <p className="text-sm" role="status">{formStatus}</p>
           </form>
         </section>
       </main>
