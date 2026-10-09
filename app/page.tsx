@@ -224,7 +224,7 @@ export default function Home() {
               <li><a className="underline" href="https://www.behance.net/tu-perfil" target="_blank" rel="noopener noreferrer">Behance</a></li>
               <li><a className="underline" href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <Button href="/cv.pdf" download variant="line" className="mt-8">Descargar CV (PDF)</Button>
+            <Button href="/cvRennyArdila.pdf" download variant="line" className="mt-8">Descargar CV (PDF)</Button>
           </div>
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <label className="block"><span className="font-semibold">Nombre</span><input className="f mt-1" name="nombre" required autoComplete="name" /></label>
